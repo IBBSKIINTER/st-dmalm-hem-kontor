@@ -76,21 +76,22 @@
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.22 0.03 250);
   /* Deep navy blue — calm, professional */
-  --primary: oklch(0.38 0.09 250);
+  /* Warm light orange — friendly, professional */
+  --primary: oklch(0.7 0.15 55);
   --primary-foreground: oklch(0.985 0.006 240);
-  --primary-soft: oklch(0.92 0.05 250);
-  /* Muted sky */
-  --secondary: oklch(0.94 0.03 240);
-  --secondary-foreground: oklch(0.3 0.06 250);
-  --muted: oklch(0.955 0.015 240);
-  --muted-foreground: oklch(0.48 0.02 250);
-  --accent: oklch(0.88 0.07 235);
-  --accent-foreground: oklch(0.28 0.07 250);
+  --primary-soft: oklch(0.94 0.06 60);
+  /* Soft warm sand */
+  --secondary: oklch(0.95 0.025 65);
+  --secondary-foreground: oklch(0.35 0.08 50);
+  --muted: oklch(0.96 0.012 60);
+  --muted-foreground: oklch(0.5 0.02 60);
+  --accent: oklch(0.88 0.09 55);
+  --accent-foreground: oklch(0.32 0.09 50);
   --destructive: oklch(0.55 0.2 27);
   --destructive-foreground: oklch(0.985 0.006 240);
-  --border: oklch(0.9 0.015 240);
-  --input: oklch(0.92 0.015 240);
-  --ring: oklch(0.5 0.1 250);
+  --border: oklch(0.9 0.02 60);
+  --input: oklch(0.92 0.02 60);
+  --ring: oklch(0.7 0.15 55);
   /* Surfaces */
   --surface: oklch(0.97 0.012 235);
   --surface-elevated: oklch(1 0 0);
