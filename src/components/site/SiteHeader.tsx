@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, NavLink } from "react-router-dom";
 
 export function SiteHeader() {
   return (
@@ -11,15 +11,15 @@ export function SiteHeader() {
           </span>
         </Link>
         <nav className="hidden md:flex items-center gap-8 text-sm">
-          <Link to="/tjanster" className="text-muted-foreground hover:text-foreground transition-colors" activeProps={{ className: "text-foreground font-medium" }}>
+          <NavLink to="/tjanster" className={({ isActive }) => `transition-colors hover:text-foreground ${isActive ? "text-foreground font-medium" : "text-muted-foreground"}`}>
             Tjänster
-          </Link>
-          <Link to="/om-oss" className="text-muted-foreground hover:text-foreground transition-colors" activeProps={{ className: "text-foreground font-medium" }}>
+          </NavLink>
+          <NavLink to="/om-oss" className={({ isActive }) => `transition-colors hover:text-foreground ${isActive ? "text-foreground font-medium" : "text-muted-foreground"}`}>
             Om oss
-          </Link>
-          <Link to="/kontakt" className="text-muted-foreground hover:text-foreground transition-colors" activeProps={{ className: "text-foreground font-medium" }}>
+          </NavLink>
+          <NavLink to="/kontakt" className={({ isActive }) => `transition-colors hover:text-foreground ${isActive ? "text-foreground font-medium" : "text-muted-foreground"}`}>
             Kontakt
-          </Link>
+          </NavLink>
         </nav>
         <Link
           to="/kontakt"
