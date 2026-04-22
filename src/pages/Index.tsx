@@ -1,52 +1,8 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import heroImage from "@/assets/hero-clean-home.jpg";
-
-export const Route = createFileRoute("/")({
-  component: Index,
-  head: () => ({
-    meta: [
-      { title: "Städfirma i Malmö — Hemstädning & Flyttstädning | StädMalmö" },
-      {
-        name: "description",
-        content:
-          "Professionell hemstädning, flyttstädning och kontorsstädning i Malmö. Försäkrade städare, RUT-avdrag och kvalitetsgaranti. Boka enkelt online.",
-      },
-      { name: "keywords", content: "städfirma Malmö, hemstädning Malmö, flyttstädning Malmö, kontorsstädning, RUT-avdrag" },
-      { property: "og:title", content: "Städfirma i Malmö — Hemstädning & Flyttstädning" },
-      { property: "og:description", content: "Försäkrade städare, kvalitetsgaranti och RUT-avdrag. Boka städning i Malmö idag." },
-      { property: "og:image", content: heroImage },
-      { name: "twitter:title", content: "Städfirma i Malmö — StädMalmö" },
-      { name: "twitter:description", content: "Hemstädning och flyttstädning i Malmö med kvalitetsgaranti." },
-      { name: "twitter:image", content: heroImage },
-    ],
-    links: [{ rel: "canonical", href: "https://stadmalmo.se/" }],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "LocalBusiness",
-          name: "StädMalmö",
-          image: "https://stadmalmo.se/og.jpg",
-          telephone: "+46-40-1234567",
-          email: "hej@stadmalmo.se",
-          priceRange: "$$",
-          address: {
-            "@type": "PostalAddress",
-            streetAddress: "Stortorget 1",
-            addressLocality: "Malmö",
-            postalCode: "211 22",
-            addressCountry: "SE",
-          },
-          areaServed: "Malmö",
-          serviceType: ["Hemstädning", "Flyttstädning", "Kontorsstädning"],
-        }),
-      },
-    ],
-  }),
-});
 
 const features = [
   { title: "Tryggt", desc: "Försäkrade och bakgrundskontrollerade städare i varje hem." },
@@ -66,12 +22,39 @@ const steps = [
   { n: "03", title: "Njut", desc: "Kom hem till ett rent, fräscht och välkomnande hem." },
 ];
 
-function Index() {
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "StädMalmö",
+  telephone: "+46-40-1234567",
+  email: "hej@stadmalmo.se",
+  priceRange: "$$",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Stortorget 1",
+    addressLocality: "Malmö",
+    postalCode: "211 22",
+    addressCountry: "SE",
+  },
+  areaServed: "Malmö",
+  serviceType: ["Hemstädning", "Flyttstädning", "Kontorsstädning"],
+};
+
+export default function Index() {
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>Städfirma i Malmö — Hemstädning & Flyttstädning | StädMalmö</title>
+        <meta name="description" content="Professionell hemstädning, flyttstädning och kontorsstädning i Malmö. Försäkrade städare, RUT-avdrag och kvalitetsgaranti. Boka enkelt online." />
+        <link rel="canonical" href="https://stadmalmo.se/" />
+        <meta property="og:title" content="Städfirma i Malmö — Hemstädning & Flyttstädning" />
+        <meta property="og:description" content="Försäkrade städare, kvalitetsgaranti och RUT-avdrag. Boka städning i Malmö idag." />
+        <meta property="og:image" content={heroImage} />
+        <meta name="twitter:image" content={heroImage} />
+        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+      </Helmet>
       <SiteHeader />
       <main>
-        {/* Hero */}
         <section className="relative overflow-hidden">
           <div className="mx-auto max-w-6xl px-6 pt-16 md:pt-24 pb-20 grid gap-12 md:grid-cols-2 md:items-center">
             <div>
@@ -105,10 +88,11 @@ function Index() {
               <div className="aspect-[4/5] overflow-hidden rounded-3xl shadow-[var(--shadow-card)]">
                 <img
                   src={heroImage}
-                  alt="Ljust och nystädat skandinaviskt vardagsrum med vit linnesoffa och salviagröna kuddar"
+                  alt="Ljust och nystädat skandinaviskt vardagsrum"
                   width={1600}
                   height={1152}
                   className="h-full w-full object-cover"
+                  loading="eager"
                 />
               </div>
               <div className="absolute -bottom-6 -left-6 hidden md:block rounded-2xl bg-card border border-border p-5 shadow-[var(--shadow-soft)] max-w-[200px]">
@@ -119,7 +103,6 @@ function Index() {
           </div>
         </section>
 
-        {/* Features */}
         <section className="bg-surface border-y border-border/60">
           <div className="mx-auto max-w-6xl px-6 py-20">
             <div className="max-w-2xl">
@@ -137,7 +120,6 @@ function Index() {
           </div>
         </section>
 
-        {/* Services */}
         <section className="mx-auto max-w-6xl px-6 py-24">
           <div className="flex items-end justify-between flex-wrap gap-4">
             <div className="max-w-xl">
@@ -150,10 +132,7 @@ function Index() {
           </div>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             {services.map((s, i) => (
-              <article
-                key={s.title}
-                className="group rounded-2xl border border-border bg-card p-8 hover:border-primary/40 transition-colors"
-              >
+              <article key={s.title} className="group rounded-2xl border border-border bg-card p-8 hover:border-primary/40 transition-colors">
                 <span className="text-xs text-muted-foreground">0{i + 1}</span>
                 <h3 className="mt-4 font-display text-2xl">{s.title}</h3>
                 <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
@@ -165,7 +144,6 @@ function Index() {
           </div>
         </section>
 
-        {/* How it works */}
         <section className="bg-surface border-y border-border/60">
           <div className="mx-auto max-w-6xl px-6 py-24">
             <div className="max-w-2xl">
@@ -184,7 +162,6 @@ function Index() {
           </div>
         </section>
 
-        {/* CTA */}
         <section className="mx-auto max-w-4xl px-6 py-24 text-center">
           <h2 className="text-3xl md:text-5xl">Redo för ett fräschare hem?</h2>
           <p className="mt-5 text-lg text-muted-foreground max-w-xl mx-auto">

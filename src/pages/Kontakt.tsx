@@ -1,23 +1,17 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { Helmet } from "react-helmet-async";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 
-export const Route = createFileRoute("/kontakt")({
-  component: KontaktPage,
-  head: () => ({
-    meta: [
-      { title: "Kontakt — Boka städning i Malmö | StädMalmö" },
-      { name: "description", content: "Kontakta StädMalmö för offert eller bokning. Vi svarar inom 24 timmar — ring 040-123 45 67 eller skicka ett meddelande." },
-      { property: "og:title", content: "Kontakta StädMalmö" },
-      { property: "og:description", content: "Boka hem-, flytt- eller kontorsstädning i Malmö. Offert inom 24h." },
-    ],
-    links: [{ rel: "canonical", href: "https://stadmalmo.se/kontakt" }],
-  }),
-});
-
-function KontaktPage() {
+export default function Kontakt() {
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>Kontakt — Boka städning i Malmö | StädMalmö</title>
+        <meta name="description" content="Kontakta StädMalmö för offert eller bokning. Vi svarar inom 24 timmar — ring 040-123 45 67 eller skicka ett meddelande." />
+        <link rel="canonical" href="https://stadmalmo.se/kontakt" />
+        <meta property="og:title" content="Kontakta StädMalmö" />
+        <meta property="og:description" content="Boka hem-, flytt- eller kontorsstädning i Malmö. Offert inom 24h." />
+      </Helmet>
       <SiteHeader />
       <main className="mx-auto max-w-3xl px-6 pt-20 pb-24">
         <span className="text-xs uppercase tracking-[0.2em] text-primary">Kontakt</span>

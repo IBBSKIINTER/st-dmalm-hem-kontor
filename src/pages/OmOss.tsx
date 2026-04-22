@@ -1,23 +1,18 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 
-export const Route = createFileRoute("/om-oss")({
-  component: OmOssPage,
-  head: () => ({
-    meta: [
-      { title: "Om oss — Lokal städfirma i Malmö sedan 2018 | StädMalmö" },
-      { name: "description", content: "StädMalmö är en lokal städfirma med försäkrade städare och kvalitetsgaranti. Lär känna teamet bakom Malmös pålitligaste hemstädning." },
-      { property: "og:title", content: "Om StädMalmö — Lokal städfirma i Malmö" },
-      { property: "og:description", content: "Försäkrade städare, kvalitetsgaranti och en personlig kundkontakt." },
-    ],
-    links: [{ rel: "canonical", href: "https://stadmalmo.se/om-oss" }],
-  }),
-});
-
-function OmOssPage() {
+export default function OmOss() {
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>Om oss — Lokal städfirma i Malmö sedan 2018 | StädMalmö</title>
+        <meta name="description" content="StädMalmö är en lokal städfirma med försäkrade städare och kvalitetsgaranti. Lär känna teamet bakom Malmös pålitligaste hemstädning." />
+        <link rel="canonical" href="https://stadmalmo.se/om-oss" />
+        <meta property="og:title" content="Om StädMalmö — Lokal städfirma i Malmö" />
+        <meta property="og:description" content="Försäkrade städare, kvalitetsgaranti och en personlig kundkontakt." />
+      </Helmet>
       <SiteHeader />
       <main className="mx-auto max-w-4xl px-6 pt-20 pb-24">
         <span className="text-xs uppercase tracking-[0.2em] text-primary">Om oss</span>

@@ -1,21 +1,7 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
-
-export const Route = createFileRoute("/tjanster")({
-  component: TjansterPage,
-  head: () => ({
-    meta: [
-      { title: "Tjänster — Hemstädning, Flyttstädning & Kontorsstädning i Malmö | StädMalmö" },
-      { name: "description", content: "Upptäck våra städtjänster i Malmö: hemstädning, flyttstädning och kontorsstädning. Försäkrade städare, RUT-avdrag och kvalitetsgaranti." },
-      { property: "og:title", content: "Städtjänster i Malmö — StädMalmö" },
-      { property: "og:description", content: "Hemstädning, flyttstädning och kontorsstädning med kvalitetsgaranti." },
-      { name: "twitter:title", content: "Städtjänster i Malmö — StädMalmö" },
-      { name: "twitter:description", content: "Hemstädning, flyttstädning och kontorsstädning med kvalitetsgaranti." },
-    ],
-    links: [{ rel: "canonical", href: "https://stadmalmo.se/tjanster" }],
-  }),
-});
 
 const services = [
   {
@@ -35,16 +21,21 @@ const services = [
   },
 ];
 
-function TjansterPage() {
+export default function Tjanster() {
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>Tjänster — Hemstädning, Flyttstädning & Kontorsstädning i Malmö | StädMalmö</title>
+        <meta name="description" content="Upptäck våra städtjänster i Malmö: hemstädning, flyttstädning och kontorsstädning. Försäkrade städare, RUT-avdrag och kvalitetsgaranti." />
+        <link rel="canonical" href="https://stadmalmo.se/tjanster" />
+        <meta property="og:title" content="Städtjänster i Malmö — StädMalmö" />
+        <meta property="og:description" content="Hemstädning, flyttstädning och kontorsstädning med kvalitetsgaranti." />
+      </Helmet>
       <SiteHeader />
       <main>
         <section className="mx-auto max-w-4xl px-6 pt-20 pb-12 text-center">
           <span className="text-xs uppercase tracking-[0.2em] text-primary">Tjänster</span>
-          <h1 className="mt-4 text-4xl md:text-5xl text-foreground">
-            Städning som gör skillnad
-          </h1>
+          <h1 className="mt-4 text-4xl md:text-5xl text-foreground">Städning som gör skillnad</h1>
           <p className="mt-5 text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Vi erbjuder ett komplett utbud av städtjänster för hem och företag i Malmö.
             Alla tjänster utförs av försäkrade städare med kvalitetsgaranti.
