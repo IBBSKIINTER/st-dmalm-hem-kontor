@@ -4,7 +4,7 @@ import { SiteFooter } from "@/components/site/SiteFooter";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import emailjs from "emailjs-com";
+import emailjs from "@emailjs/browser";
 import { toast } from "sonner";
 import {
   Form,
@@ -40,12 +40,12 @@ const onSubmit = (values: ContactValues) => {
     "service_9bcpxtu",
     "template_36xmheq",
     {
-      name: values.name,
-      email: values.email,
-      phone: values.phone,
-      message: values.message,
-    },
-    "PUBLIC_KEY"
+  from_name: values.name,
+  from_email: values.email,
+  phone: values.phone,
+  message: values.message,
+},
+    "7IaL801MXY-1j8IoY"
   )
   .then(() => {
     toast.success("Tack! Vi återkommer inom 24 timmar.");
