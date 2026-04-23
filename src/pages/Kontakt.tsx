@@ -4,6 +4,7 @@ import { SiteFooter } from "@/components/site/SiteFooter";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import emailjs from "emailjs-com";
 import { toast } from "sonner";
 import {
   Form,
@@ -32,11 +33,28 @@ export default function Kontakt() {
     defaultValues: { name: "", email: "", phone: "", message: "" },
   });
 
-  const onSubmit = (values: ContactValues) => {
-    console.log("Kontaktformulär:", values);
+  
+
+const onSubmit = (values: ContactValues) => {
+  emailjs.send(
+    "SERVICE_ID",
+    "TEMPLATE_ID",
+    {
+      name: values.name,
+      email: values.email,
+      phone: values.phone,
+      message: values.message,
+    },
+    "PUBLIC_KEY"
+  )
+  .then(() => {
     toast.success("Tack! Vi återkommer inom 24 timmar.");
     form.reset();
-  };
+  })
+  .catch(() => {
+    toast.error("Något gick fel. Försök igen.");
+  });
+};
 
   return (
     <div className="min-h-screen bg-background">
