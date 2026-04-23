@@ -37,8 +37,8 @@ export default function Kontakt() {
 
 const onSubmit = (values: ContactValues) => {
   emailjs.send(
-    "SERVICE_ID",
-    "TEMPLATE_ID",
+    "service_9bcpxtu",
+    "template_36xmheq",
     {
       name: values.name,
       email: values.email,
