@@ -95,10 +95,6 @@ export default function Index() {
                   loading="eager"
                 />
               </div>
-              <div className="absolute -bottom-6 -left-6 hidden md:block rounded-2xl bg-card border border-border p-5 shadow-[var(--shadow-soft)] max-w-[200px]">
-                <p className="text-3xl font-display text-primary">98%</p>
-                <p className="text-xs text-muted-foreground mt-1">av våra kunder rekommenderar oss till en vän</p>
-              </div>
             </div>
           </div>
         </section>
